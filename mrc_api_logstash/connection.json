@@ -1,6 +1,6 @@
 
-{"AWS-logstash" : {"host": "13.125.32.87",
-                   "port": 50000,
+{"AWS-logstash" : {"host": null,
+                   "port": null,
                    "user": null,
                    "password":  null
                   }
