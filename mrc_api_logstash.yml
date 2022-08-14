@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  mrc_api:
+    container_name: mrc_api_logstash
+    restart: always
+    build: ./mrc_api_logstash
+    volumes:
+    - C:/docker_volumes_test/mrc/log/:/app/log
+    ports:
+      - "8000:8000"
+    command: gunicorn -w 2 --threads 2 -t 0 -b 0.0.0.0:8000 wsgi:app
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - mrc_api
